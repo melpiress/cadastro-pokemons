@@ -42,7 +42,6 @@ const Formulario = ({onAddPokemon}) => {
       setDescricao("");
       setPoder("");
     } catch (error) {
-      console.error(error);
       alert("Erro ao buscar Pokémon");
     }
   };
