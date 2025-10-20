@@ -1,35 +1,72 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import Formulario from './components/Formulario';
+import './App.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [pokemons, setPokemons] = useState([]);
+
+  const handleAddPokemon = (pokemon) => {
+    setPokemons((atual) => [...atual, pokemon]);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="pokedex-container">
+      <h1 className="pokedex-titulo">Cadastro de Pokémons</h1>
+
+      <div className="pokedex-body">
+      <div className="form-container">
+        <Formulario onAddPokemon={handleAddPokemon} />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
+
+      <div className="lista-container">
+        <h2 className="pokedex-subtitulo">Pokémons Capturados:</h2>
+        <ul className="pokemon-lista">
+          {pokemons.map((p, index) => (
+            <li key={index} className="pokemon-item" style={
+              { backgroundColor: getTipoColor(p.tipo), 
+              border: `3px solid ${getTipoColor(p.tipo)}`}}>
+              <img src={p.imagem} width={80} alt={p.nome} className="pokemon-imagem" />
+              <div>
+                <strong className="pokemon-nome">{p.nome}</strong> — 
+                Tipo: <span className="pokemon-tipo">{p.tipo}</span>, 
+                Poder: {p.poder}
+                <br />
+                <span className="pokemon-descricao">
+                  Descrição: {p.descricao || 'Sem descrição'}
+                </span>
+              </div>
+            </li>
+          ))}
+        </ul>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  </div>
+  );
 }
 
-export default App
+function getTipoColor(tipo){
+  const cores = {
+    fogo: '#f87171',
+    agua: '#60a5fa',
+    planta: '#4ade80',
+    eletrico: '#facc15',
+    venenoso: '#a855f7',
+    dragao: '#7dd3fc',
+    sombrio: '#374151',
+    psiquico: '#f472b6',
+    gelo: '#bae6fd',
+    pedra: '#a1a1aa',
+    terrestre: '#92400e',
+    lutador: '#b91c1c',
+    fantasma: '#6b21a8',
+    fada: '#f9a8d4',
+    aco: '#94a3b8',
+    inseto: '#84cc16',
+    normal: '#9ca3af',
+    voador: '#93c5fd',
+  };
+
+  return cores[tipo?.toLowerCase?.()] || '#ffc4c4';
+}
+
+export default App;

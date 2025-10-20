@@ -1,42 +1,101 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body {
+  background-color: #f0f0f0;
+  font-family: 'Arial', sans-serif;
+  color: #222;
+  margin: 0;
+}
+
+.pokedex-container {
   text-align: center;
+  padding: 2rem;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.pokedex-titulo {
+  font-family: 'Press Start 2P', cursive;
+  background: #e53e3e;
+  color: #facc15;
+  padding: 1rem;
+  border-radius: 12px;
+  border-bottom: 8px solid #111;
+  max-width: 600px;
+  text-shadow: 2px 2px #222;
+  margin: 0 auto;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+.pokedex-subtitulo {
+  margin-top: 2rem;
+  font-size: 1.5rem;
+  color: #111;
+  border-bottom: 3px solid #e53e3e;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+.pokemon-lista {
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+}
+
+.pokemon-item {
+  border-radius: 12px;
+  padding: 1rem;
+  margin: 1rem auto;
+  max-width: 500px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.pokemon-imagem {
+  border-radius: 50%;
+  border: 1px solid #222;
+  background: white;
+  padding: 4px;
+}
+
+.pokemon-nome {
+  color: #000000;
+  font-weight: bold;
+}
+
+.pokemon-tipo {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.pokemon-descricao {
+  display: block;
+  color: #444;
+  font-style: italic;
+  margin-top: 4px;
+}
+
+.pokedex-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .pokedex-body {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 13rem;
   }
-  to {
-    transform: rotate(360deg);
+
+  .form-container {
+    width: 400px; 
+    flex: none; 
   }
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  .lista-container {
+    flex: 1; 
   }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }
