@@ -50,6 +50,7 @@ const Formulario = ({ onAddPokemon }) => {
           placeholder="Ex: Pikachu, Charmander"
           onChange={handleNome}
           value={nome}
+          required
         />
 
         <label>Descrição:</label>
